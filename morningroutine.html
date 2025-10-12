@@ -1,0 +1,645 @@
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanza Magazine | Feed Your Mind. Strengthen Your Character.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #d4af37;
+            --light-color: #f8f8f8;
+            --gray-light: #eaeaea;
+            --gray-medium: #8a8a8a;
+            --gray-dark: #4a4a4a;
+            --white: #ffffff;
+            --black: #000000;
+            --inspiration-bg: #f9f7ff;
+            --business-bg: #f0f2f5;
+            --lifestyle-bg: #f5f7f0;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #f0f0f0;
+            --secondary-color: #d4af37;
+            --light-color: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --gray-medium: #8a8a8a;
+            --gray-dark: #c0c0c0;
+            --white: #121212;
+            --black: #fffdfd;
+            --inspiration-bg: #1f1a2e;
+            --business-bg: #1a1f2e;
+            --lifestyle-bg: #1e2a1a;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon, .theme-toggle {
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(53, 52, 52, 0.6), rgba(59, 58, 58, 0.6)), url('hero\ 2.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray-light);
+        }
+
+        /* Featured Articles */
+        .featured-articles {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .article-content p {
+            color: var(--gray-medium);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Section Blocks */
+        .section-block {
+            padding: 80px 0;
+        }
+
+        .inspiration {
+            background-color: var(--inspiration-bg);
+        }
+
+        .business {
+            background-color: var(--business-bg);
+        }
+
+        .lifestyle {
+            background-color: var(--lifestyle-bg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            margin-bottom: 0;
+        }
+
+        .view-all {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .section-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .section-article {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .section-article:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-article-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .section-article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .section-article:hover .section-article-image img {
+            transform: scale(1.05);
+        }
+
+        .section-article-content {
+            padding: 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--gray-medium);
+        }
+
+        .article-tag {
+            background-color: var(--gray-light);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--gray-dark);
+        }
+
+        .section-article-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .footer-logo span {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Article Page */
+        .article-page {
+            padding: 80px 0;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+        }
+
+        .article-meta-large {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--gray-medium);
+        }
+
+        .article-date {
+            margin-right: 20px;
+        }
+
+        .article-category {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .article-image-large {
+            height: 400px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .article-image-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+        }
+
+        .back-home {
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 20px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .view-all {
+                margin-top: 10px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-articles {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">ዋንዛ <span>መጽሔት</span></a>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="amharic.html">ዋና ማዉጫ</a></li>
+                    <li><a href="#inspiration">መነሳሳት</a></li>
+                    <li><a href="#business">ቢዝነስ</a></li>
+                    <li><a href="#lifestyle">የአኗኗር ዘይቤ</a></li>
+                    <li><a href="#">ስለእኛ</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <body>
+ <!-- Article Page (Hidden by default) -->
+    <div class="article-page">
+        <div class="container">
+            <div class="article-header">
+                <h1>ማለዳን ማሸነፍ: የጠዋት ልማድን በመቀየር፣ ህይወትን መቀየር</h1>
+                <div class="article-meta-large">
+                    <span class="article-date">መስከረም 15, 2018</span>
+                    <span class="article-category">የኑሮ ዘይቤ</span>
+                </div>
+            </div>
+            <div class="article-image-large">
+                <img src="https://www.sunrisesunsettime.org/images/bkg.jpg" alt="Morning Routine">
+            </div>
+            <div class="article-body">
+                <p>በማለዳ ላይ አንድ አስደሳች ነገር አለ ። የተቀረው ዓለም በሚተኛበት ጊዜ, የቀኑን ሙሉ አቅጣጫ ለመቅረጽ እድሉ አለዎት. የ 5 AM ክለብ ቀደም ብሎ መነሳት ብቻ አይደለም; ጊዜዎን፣ ትኩረትዎን እና ህይወትዎን መቆጣጠር ነው።</p>
+
+<p>በተለያዩ ዘርፎች የተሳካላቸው ሰዎች - ከዋና ሥራ አስፈፃሚዎች እና አርቲስቶች እስከ አትሌቶች እና ሥራ ፈጣሪዎች - የማለዳ ዋጋን ከረጅም ጊዜ በፊት ተገንዝበዋል። አእምሮዎ ስለታም እና ፍላጎትዎ በጣም ጠንካራ በሚሆንበት ጊዜ ትኩረትን የሚከፋፍሉ ነገሮች የጸዳ ጊዜ ነው።
+ታዲያ ይህን ለውጥ እንዴት ማድረግ ይችላሉ? የጠዋት የዕለት ተዕለት እንቅስቃሴዎ የቀኑን ሙሉ መሠረት መሆኑን በመገንዘብ ይጀምራል። የመጀመሪያውን ሰዓት በግል እድገት፣ እቅድ እና የአካል ብቃት እንቅስቃሴ ላይ በማሳለፍ በሚከተለው ሰዓት ላይ ተጽእኖ የሚያሳድር ፍጥነት ይገነባሉ።</p>
+
+<p>የ20/20/20 ዘዴ ለጠዋትዎ ተግባራዊ መዋቅር ይሰጣል 20 ደቂቃ የአካል ብቃት እንቅስቃሴ፣ 20 ደቂቃ ነጸብራቅ እና 20 ደቂቃ ትምህርት። ይህ የተሟላ አካሄድ እርስዎ እያደጉ መሆንዎን ያረጋግጣል በአካል፣ በአእምሮ እና በስሜታዊነት እራስዎን ይንከባከቡ። 
+አላማው ቀደም ብሎ መነሳት ብቻ እንዳልሆነ ያስታውሱ - በተሻለ ሁኔታ ውስጥ መንቃት ነው። የምትፈልገውን ህይወት ለመገንባት መሆን ወደምትፈልገው ሰው ለማደግ እነዚያን ሰላማዊ የመጀመሪያ ሰአታት ተጠቀም።</p>
+            </div>
+            <div class="back-home">
+                <a href="amharic.html" class="btn btn-outline">ዋና ማዉጫ</a>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">ዋንዛ <span>መጽሔት</span></a>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ዋንዛ መጽሔት | Designed by Aldo Tech</p>
+            </div>
+        </div>
+    </footer>
